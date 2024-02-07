@@ -1,0 +1,37 @@
+<h1> List of all directors </h1>
+<hr>
+<table border="1">
+
+  <tr>
+    <th>ID</th>
+    <th>Image</th>
+    <th>Title</th>
+    <th>Year</th>
+    <th></th>
+  </tr>
+
+  <% Movie.all.each do | a_movie| %>
+    <tr>
+      <td>
+        <%= a_movie.id%>
+      </td>
+
+      <td>
+        <img class="director-img" src="<%=a_movie.image%>">
+      </td>
+
+      <td>
+        <%=a_movie.title%>
+      </td>
+
+      <td>
+        <%=a_movie.year%>
+      </td>
+
+      <td>
+      <a href="/directors/<%=a_movie.id%>">Show details</a>
+      </td>
+    </tr>
+  <% end %>
+
+</table>
