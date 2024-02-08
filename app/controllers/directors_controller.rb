@@ -16,10 +16,10 @@ class DirectorsController < ApplicationController
   def youngest
     records = Director.where.not({ :dob => nil })
 
-    render({ :template => "directors/youngest" })
+    render({ :template => "director_templates/youngest" })
   end
 
   def oldest
-    render({ :template => "directors/oldest" })
+    render({ :template => "director_templates/oldest" })
   end
 end
