@@ -3,6 +3,23 @@ class DirectorsController < ApplicationController
     render({ :template => "director_templates/list" })
   end
 
+  
+
+  def youngest
+    records = Director.where.not({ :dob => nil })
+    
+
+    @youngest_director = records.at(0)
+
+    
+
+    render({ :template => "director_templates/youngest" })
+  end
+
+  def eldest
+    render({ :template => "director_templates/eldest" })
+  end
+
   def show
     the_id = params.fetch("id")
 
@@ -11,15 +28,5 @@ class DirectorsController < ApplicationController
     @the_director = matching_records.at(0)
 
     render({ :template => "director_templates/details" })
-  end
-
-  def youngest
-    records = Director.where.not({ :dob => nil })
-
-    render({ :template => "director_templates/youngest" })
-  end
-
-  def oldest
-    render({ :template => "director_templates/oldest" })
   end
 end
