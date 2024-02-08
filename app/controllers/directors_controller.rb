@@ -8,8 +8,10 @@ class DirectorsController < ApplicationController
   def youngest
     records = Director.where.not({ :dob => nil })
     records = records.order(:dob)
+    records = records.reverse_order
 
     @youngest_director = records.at(0)
+    @format_youngest_birthday = @youngest_director.dob.strftime("%B %e, %Y")
 
     
 
