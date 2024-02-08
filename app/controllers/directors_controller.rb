@@ -7,7 +7,7 @@ class DirectorsController < ApplicationController
 
   def youngest
     records = Director.where.not({ :dob => nil })
-    
+    records = records.order(:dob)
 
     @youngest_director = records.at(0)
 
@@ -17,6 +17,14 @@ class DirectorsController < ApplicationController
   end
 
   def eldest
+    records = Director.where.not({ :dob => nil })
+    records = records.order(:dob)
+
+    @oldest_director = records.at(0)
+    @format_oldest_birthday = @oldest_director.dob.strftime("%B %e, %Y")
+
+
+
     render({ :template => "director_templates/eldest" })
   end
 

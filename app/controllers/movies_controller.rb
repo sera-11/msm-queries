@@ -12,8 +12,6 @@ class MoviesController < ApplicationController
 
     @the_movie = matching_records.at(0)
 
-
-
     render({:template => "movie_templates/details"})
   end
 
